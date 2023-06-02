@@ -11,6 +11,7 @@ import chess.pieces.Bishop;
 import chess.pieces.King;
 import chess.pieces.Knight;
 import chess.pieces.Pawn;
+import chess.pieces.Queen;
 import chess.pieces.Rook;
 
 public class ChessMatch {
@@ -48,9 +49,9 @@ public class ChessMatch {
 	}
 
 	public ChessPiece[][] getPieces() {
-		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColums()];
+		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
 		for (int i = 0; i < board.getRows(); i++) {
-			for (int j = 0; j < board.getColums(); j++) {
+			for (int j = 0; j < board.getColumns(); j++) {
 				mat[i][j] = (ChessPiece) board.piece(i, j);
 			}
 		}
@@ -113,7 +114,7 @@ public class ChessMatch {
 	}
 
 	private void validateSourcePosition(Position position) {
-		if (!board.theresIsAPiece(position)) {
+		if (!board.thereIsAPiece(position)) {
 			throw new ChessException("There is no piece on source position");
 		}
 		if (currentPlayer != ((ChessPiece) board.piece(position)).getColor()) {
@@ -172,7 +173,7 @@ public class ChessMatch {
 		for (Piece p : list) {
 			boolean[][] mat = p.possibleMoves();
 			for (int i = 0; i < board.getRows(); i++) {
-				for (int j = 0; j < board.getColums(); j++) {
+				for (int j = 0; j < board.getColumns(); j++) {
 					if (mat[i][j]) {
 						Position source = ((ChessPiece) p).getChessPosition().toPosition();
 						Position target = new Position(i, j);
@@ -198,6 +199,7 @@ public class ChessMatch {
 		placeNewPiece('a', 1, new Rook(board, Color.WHITE));
 		placeNewPiece('b', 1, new Knight(board, Color.WHITE));
 		placeNewPiece('c', 1, new Bishop(board, Color.WHITE));
+		placeNewPiece('d', 1, new Queen(board, Color.WHITE));
 		placeNewPiece('e', 1, new King(board, Color.WHITE));
 		placeNewPiece('f', 1, new Bishop(board, Color.WHITE));
 		placeNewPiece('g', 1, new Knight(board, Color.WHITE));
@@ -214,6 +216,7 @@ public class ChessMatch {
 		placeNewPiece('a', 8, new Rook(board, Color.BLACK));
 		placeNewPiece('b', 8, new Knight(board, Color.BLACK));
 		placeNewPiece('c', 8, new Bishop(board, Color.BLACK));
+		placeNewPiece('d', 8, new Queen(board, Color.BLACK));
 		placeNewPiece('e', 8, new King(board, Color.BLACK));
 		placeNewPiece('f', 8, new Bishop(board, Color.BLACK));
 		placeNewPiece('g', 8, new Knight(board, Color.BLACK));
