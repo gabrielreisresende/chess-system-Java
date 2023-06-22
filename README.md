@@ -1,4 +1,5 @@
 # Chess System
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/gabrielreisresende/chess-system-Java/blob/main/LICENSE)
 
 Sistema de xadrez para ser jogado na linha de comando colorida. O sistema foi desenvolvido na linguagem JAVA
 e serviu de grande aprendizado e para consolidar os conceitos de Programação Orientada a Objetos.
